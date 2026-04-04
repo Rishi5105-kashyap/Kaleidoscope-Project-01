@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+    <!-- PWA Settings -->
+    <meta name="theme-color" content="#050505">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+
+    <title>Kaleidoscope HD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=7">
+</head>
+
+<body>
+    <div id="splashScreen">
+        <div class="splash-content">
+            <h1>KALEIDOSCOPE HD</h1>
+            <p>Click anywhere to begin</p>
+            <p class="author">By : Y H RISHITH KASHYAP</p>
+            <p class="author"> - inspired from kaleidoscope</p>
+        </div>
+    </div>
+
+
+    <canvas id="mainCanvas"></canvas>
+
+    <div id="quickControls" class="quick-controls">
+        <button id="quickLeftBtn" class="quick-btn" title="Spin Left">⟲</button>
+        <button id="quickRightBtn" class="quick-btn" title="Spin Right">⟳</button>
+    </div>
+
+    <button id="toggleUIBtn" class="floating-btn" title="Toggle Controls">☰</button>
+
+    <div class="controls" id="controlsPanel">
+        <h1>Kaleidoscope</h1>
+        <p>Draw to paint, hover in a circle to spin!</p>
+
+        <div class="input-group">
+            <label>Color Theme</label>
+            <select id="colorPalette">
+                <option value="rainbow">Full Rainbow</option>
+                <option value="cyberpunk">Cyberpunk Neon</option>
+                <option value="ocean">Deep Ocean</option>
+                <option value="inferno">Inferno Burst</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Structure & Dynamics</label>
+            <div class="save-row">
+                <button id="symmetryBtn" class="active">❆ Snowflake</button>
+                <button id="audioRingBtn" class="active">◎ Scope: ON</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Active Brushes (Mix & Match)</label>
+            <div class="checkbox-group">
+                <label class="cb-btn"><input type="checkbox" id="brushNeon" checked> Neon</label>
+                <label class="cb-btn"><input type="checkbox" id="brushRibbon"> Ribbon</label>
+                <label class="cb-btn"><input type="checkbox" id="brushPulsar"> Pulsar</label>
+                <label class="cb-btn"><input type="checkbox" id="brushParticles"> Particles</label>
+                <label class="cb-btn"><input type="checkbox" id="brushPlasma"> Plasma</label>
+                <label class="cb-btn"><input type="checkbox" id="brushVoid"> Void Cutter</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="mirrorsInput">Mirrors (2-16)</label>
+            <input type="number" id="mirrorsInput" value="3" min="2" max="16">
+        </div>
+
+        <div class="input-group">
+            <label for="intensityInput">Glow Intensity</label>
+            <input type="range" id="intensityInput" value="65" min="10" max="100">
+        </div>
+
+        <div class="input-group">
+            <label for="brushSizeInput">Brush Size</label>
+            <input type="range" id="brushSizeInput" value="6" min="1" max="30">
+        </div>
+
+        <div class="input-group">
+            <label for="fadeInput">Decay Speed</label>
+            <input type="range" id="fadeInput" value="3" min="0" max="10">
+        </div>
+
+        <div class="input-group">
+            <label for="audioSenseInput">Audio Sensitivity</label>
+            <input type="range" id="audioSenseInput" value="50" min="0" max="100">
+        </div>
+
+        <div class="input-group">
+            <label for="speedInput">Animation Speed</label>
+            <input type="range" id="speedInput" value="50" min="0" max="100">
+        </div>
+
+        <button id="audioReactBtn">🎵 React to Audio (Mic)</button>
+        
+        <div class="save-row">
+            <button id="autoRotateBtn" class="active" style="flex:2;">Auto Rotate ON</button>
+            <button id="rotateDirBtn" style="flex:1;">⟳ Right</button>
+        </div>
+        
+        <button id="clearBtn">Clear Canvas</button>
+
+        <div class="save-row">
+            <button id="downloadBlackBtn">PNG (Black)</button>
+            <button id="downloadTransparentBtn">PNG (Trans)</button>
+            <button id="recordBtn" style="flex:1.2;">🎥 Record View</button>
+        </div>
+    </div>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => console.log('ServiceWorker error:', err));
+        }
+    </script>
+    <script src="script.js?v=7"></script>
+</body>
+
+</html>
